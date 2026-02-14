@@ -1,0 +1,19 @@
+{
+    "version": "1.0.0",
+    "description": "Vi — the original Vi, not Vim. Native Win64, single binary. Trilingual (繁中 / 日本語 / EN) for Windows x64.",
+    "homepage": "https://saki-studio.com.tw/vi/",
+    "license": "GPL-2.0-only",
+    "url": "https://saki-studio.com.tw/downloads/vi.exe",
+    "hash": "f8235794d90eb100ced49bf6532a678c0dae5f5b53e132659817c920d88adf3b",
+    "bin": "vi.exe",
+    "checkver": {
+        "url": "https://saki-studio.com.tw/vi/",
+        "regex": "v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://saki-studio.com.tw/downloads/vi.exe",
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}
