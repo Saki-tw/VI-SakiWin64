@@ -1,0 +1,30 @@
+# Build outputs
+*.exe
+*.o
+*.obj
+*.map
+*.out
+
+# Busybox build artifacts
+.config.old
+..config.tmp
+.kconfig.d
+.kernelrelease
+.tmp_versions/
+
+# Secrets & local infra (NEVER commit)
+.env
+.env.*
+*.promissrum
+
+# Editor/IDE
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Local-only directories
+deploy_tmp/
+.agent/
+
