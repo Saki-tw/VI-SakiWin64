@@ -1,0 +1,28 @@
+name: Feature Request / 功能建議
+description: 建議新功能或改善
+title: "[Feature] "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: 功能描述
+      description: 你希望 vi 新增什麼功能？
+    validations:
+      required: true
+  - type: textarea
+    id: usecase
+    attributes:
+      label: 使用情境
+      description: 這個功能解決什麼問題？
+  - type: dropdown
+    id: scope
+    attributes:
+      label: 影響範圍
+      options:
+        - 編輯功能
+        - Unicode / CJK 支援
+        - 安裝 / 部署
+        - 效能
+        - 文件
+        - 其他

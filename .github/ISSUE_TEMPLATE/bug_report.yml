@@ -1,0 +1,57 @@
+name: Bug Report / 問題回報
+description: 回報 Vi-SakiWin64 的問題
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感謝回報！請盡量填寫以下資訊。
+  - type: input
+    id: version
+    attributes:
+      label: Vi 版本
+      description: 執行 `vi --version` 的輸出
+      placeholder: "Vi-SakiWin64 1.0.0 (BusyBox v1.38.0.git)"
+    validations:
+      required: true
+  - type: input
+    id: windows
+    attributes:
+      label: Windows 版本
+      placeholder: "Windows 11 24H2"
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: 問題描述
+      description: 清楚描述問題
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 重現步驟
+      description: 怎麼重現這個問題？
+      value: |
+        1. 
+        2. 
+        3. 
+  - type: textarea
+    id: expected
+    attributes:
+      label: 預期行為
+  - type: textarea
+    id: actual
+    attributes:
+      label: 實際行為
+  - type: dropdown
+    id: locale
+    attributes:
+      label: 系統語言
+      options:
+        - 繁體中文
+        - 日本語
+        - English
+        - 其他
