@@ -122,3 +122,12 @@ bash scripts/build.sh
 
 本專案是 [BusyBox](https://busybox.net/) 及 [busybox-w32](https://github.com/rmyorston/busybox-w32) 的衍生作品。
 完整授權條款見 [LICENSE](LICENSE)，上游歸屬見 [NOTICE](NOTICE)，第三方授權見 [THIRD_PARTY_LICENSES](THIRD_PARTY_LICENSES)。
+
+---
+
+## Acknowledgments
+
+- [BusyBox](https://busybox.net/) and [busybox-w32](https://github.com/rmyorston/busybox-w32) by Ron Yorston
+- [ScoopInstaller/Extras](https://github.com/ScoopInstaller/Extras) maintainers for review guidance
+- [microsoft/winget-pkgs](https://github.com/microsoft/winget-pkgs) for the validation pipeline and manifest feedback
+- Bill Joy, for writing vi in the first place
