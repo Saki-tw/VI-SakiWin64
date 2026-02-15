@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SakiVI — すべてのvi使いへの近道</title>
+    <meta name="description" content="三言語 Vi テキストエディタ：繁體中文・日本語・English。BusyBox-w32 ベース、GPL-2.0。">
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <nav>
+        <span class="site">:e SakiVI</span>
+        <span class="lang">
+            <a href="../">繁中</a>
+            <a href="." class="active">日本語</a>
+            <a href="../en/">English</a>
+        </span>
+    </nav>
+
+    <h1>Vi-SakiWin64</h1>
+    <p>すべてのvi使いへの、近道。コンパイルを通る詩。</p>
+
+    <blockquote>
+        雨の午後、静かにキーを叩いて――ファイルを、守りたかったの。
+    </blockquote>
+
+    <h2>由来</h2>
+    <p>
+        見つけられる最後のソースは
+        <a href="https://ex-vi.sourceforge.net">Traditional Vi</a>
+        でした。オリジナルの vi は、そのアカウントが消えたことで消えてしまいました。
+        フォークの一つさえ残されていない——まるで、雨に溶けた手紙のように。
+    </p>
+    <p>
+        袁志豪 / lichray さんが最後まで守ってくれたことに感謝しています。
+        Keith Bostic氏の Nvi は依存関係が多すぎて、
+        修正するのは廃墟の中で図書館を再建するようなものでした。
+        そのため、ソースコードは
+        <a href="https://github.com/rmyorston/busybox-w32">busybox-w32</a>
+        から直接取得しました——まだ燃えている小さな炎。
+    </p>
+    <p>
+        このバージョンは Ron Yorston 氏のコミットに基づいています：<br>
+        <code>ash: fix execution of applets via Unix-style path</code><br>
+        <code>686a0803f974</code>
+    </p>
+    <p>
+        感謝：Bill Joy（創造者）、Gunnar Ritter（守護者）、Ron Yorston（現門番）。
+    </p>
+
+    <h2>機能</h2>
+    <dl>
+        <dt>🌏 三言語インターフェース</dt>
+        <dd>繁體中文 / 日本語 / English</dd>
+        <dt>📦 単一実行ファイル</dt>
+        <dd>一つの .exe、PATH に入れるだけ</dd>
+        <dt>🪟 ネイティブ Win64</dt>
+        <dd>WriteConsoleW で Unicode を直接出力、文字化けなし</dd>
+        <dt>📖 :help</dt>
+        <dd>三言語クイックリファレンス内蔵</dd>
+    </dl>
+
+    <h2>インストール</h2>
+    <pre>
+# Scoop（推奨）
+scoop bucket add sakivi https://github.com/Saki-tw/scoop-sakivi
+scoop install saki-vi
+
+# Winget
+winget install SakiStudio.SakiVI
+
+# 手動：Releases からvi.exe をダウンロード、PATH に配置
+</pre>
+
+    <h2>使い方</h2>
+    <pre>
+vi file.txt          # ファイルを編集
+vi -H                # 有効な機能を表示
+vi --version         # バージョン情報
+:help                # 三言語リファレンス
+:features            # ビルド機能一覧
+</pre>
+
+    <h2>ビルド</h2>
+    <p>MSYS2 UCRT64 環境：</p>
+    <pre>
+git clone --recursive https://github.com/Saki-tw/Vi-SakiWin64.git
+cd Vi-SakiWin64
+bash scripts/build.sh
+</pre>
+
+    <h2>ライセンス</h2>
+    <p>
+        コード：<strong>GPL-2.0-only</strong><br>
+        ドキュメント：<strong>CC-BY-4.0</strong>
+    </p>
+    <p>
+        <a href="https://busybox.net/">BusyBox</a> および
+        <a href="https://github.com/rmyorston/busybox-w32">busybox-w32</a>
+        の派生作品です。完全なソースコードは git submodule として同梱されています。
+    </p>
+
+    <footer>
+        Copyright &copy; 2026 咲ちゃん（Saki）/ Saki Studio
+        &middot; <a href="http://saki-studio.com.tw">saki-studio.com.tw</a>
+        &middot; <a href="https://github.io/Saki-tw">GitHub</a>
+    </footer>
+
+</body>
+
+</html>

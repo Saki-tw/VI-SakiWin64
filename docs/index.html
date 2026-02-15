@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SakiVI — 給所有 vi 派的高速捷徑</title>
+  <meta name="description" content="三語 Vi 文字編輯器：繁體中文、日本語、English。基於 BusyBox-w32，GPL-2.0 釋出。">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <nav>
+    <span class="site">:e SakiVI</span>
+    <span class="lang">
+      <a href="." class="active">繁中</a>
+      <a href="ja/">日本語</a>
+      <a href="en/">English</a>
+    </span>
+  </nav>
+
+  <h1>Vi-SakiWin64</h1>
+  <p>給所有 vi 派的高速捷徑。一個能通過編譯的詩。</p>
+
+  <blockquote>
+    人間別久不成悲——但至少 <code>:wq</code> 還能存檔。
+  </blockquote>
+
+  <h2>淵源</h2>
+  <p>
+    由於能找到的最後一個來源是
+    <a href="https://ex-vi.sourceforge.net">Traditional Vi</a>，
+    原始 vi 的版本已經因為帳號消失而消失，就連一個 Fork 都沒留下——
+    那些程式碼，像是被撕掉的書頁。
+  </p>
+  <p>
+    感謝袁志豪 / lichray 將它留存至最後。
+    Keith Bostic 所創之 Nvi 依賴太多東西，修改起來如同在廢墟中重建一座圖書館。
+    因此源碼直接取自
+    <a href="https://github.com/rmyorston/busybox-w32">busybox-w32</a>，
+    一個仍在燃燒的火種。
+  </p>
+  <p>
+    此版本基於 Ron Yorston 的提交：<br>
+    <code>ash: fix execution of applets via Unix-style path</code><br>
+    <code>686a0803f974</code>
+  </p>
+  <p>
+    感謝：Bill Joy（創世者）、Gunnar Ritter（守護者）、Ron Yorston（現任守門人）。
+  </p>
+
+  <h2>特色</h2>
+  <dl>
+    <dt>🌏 三語介面</dt>
+    <dd>繁體中文 / 日本語 / English</dd>
+    <dt>📦 單檔免安裝</dt>
+    <dd>一個 .exe，放進 PATH 就能用</dd>
+    <dt>🪟 原生 Win64</dt>
+    <dd>WriteConsoleW 直接輸出 Unicode，不怕 Big5 亂碼</dd>
+    <dt>📖 :help</dt>
+    <dd>內建三語快速參考卡</dd>
+  </dl>
+
+  <h2>安裝</h2>
+  <pre>
+# Scoop（推薦）
+scoop bucket add sakivi https://github.com/Saki-tw/scoop-sakivi
+scoop install saki-vi
+
+# Winget
+winget install SakiStudio.SakiVI
+
+# 手動：從 Releases 下載 vi.exe，放入 PATH
+</pre>
+
+  <h2>使用</h2>
+  <pre>
+vi file.txt          # 編輯檔案
+vi -H                # 顯示啟用功能
+vi --version         # 版本資訊
+:help                # 三語快速參考
+:features            # 編譯功能一覽
+</pre>
+
+  <h2>建置</h2>
+  <p>MSYS2 UCRT64 環境：</p>
+  <pre>
+git clone --recursive https://github.com/Saki-tw/Vi-SakiWin64.git
+cd Vi-SakiWin64
+bash scripts/build.sh
+</pre>
+
+  <h2>授權</h2>
+  <p>
+    程式碼：<strong>GPL-2.0-only</strong><br>
+    文件：<strong>CC-BY-4.0</strong>
+  </p>
+  <p>
+    基於 <a href="https://busybox.net/">BusyBox</a>
+    及 <a href="https://github.com/rmyorston/busybox-w32">busybox-w32</a>
+    的衍生作品。完整原始碼以 git submodule 形式隨附。
+  </p>
+
+  <footer>
+    Copyright &copy; 2026 咲ちゃん（Saki）/ Saki Studio
+    &middot; <a href="http://saki-studio.com.tw">saki-studio.com.tw</a>
+    &middot; <a href="https://github.io/Saki-tw">GitHub</a>
+  </footer>
+
+</body>
+
+</html>

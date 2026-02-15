@@ -1,0 +1,206 @@
+/* SakiVI — vi spirit meets Saki Studio color philosophy */
+/* Ref: 20251115_ColorPhilosophy.Promissrum */
+/* 馬卡龍紫 (主色) + 勿忘草青 (輔色) + terminal aesthetic */
+:root {
+  /* Layer 1: Primitive Tokens (Nippon Colors) */
+  --macaron-purple: #c6a4cf;
+  --sumire-iro: #7058a3;
+  --shion-iro: #867ba9;
+  --fuji-iro: #bbbcde;
+  --forget-me-not: #89c3eb;
+  --hanada-iro: #2792c3;
+  --koki-hanada: #2a4073;
+  --sora-iro: #a0d8ef;
+  --mizu-iro: #bce2e8;
+
+  /* Layer 2: Semantic Tokens */
+  --bg: #1a0f1f;
+  /* 深紫黑 (dark mode 規範) */
+  --bg-code: #150c1a;
+  /* code block 更深   */
+  --fg: #d8cfe0;
+  /* 帶紫調的淺灰      */
+  --dim: var(--shion-iro);
+  /* 紫苑色 — 次要文字 */
+  --accent: var(--macaron-purple);
+  /* 馬卡龍紫 — 標題 */
+  --link: var(--hanada-iro);
+  /* 縹色 — 連結     */
+  --link-hover: var(--forget-me-not);
+  --quote-border: var(--sumire-iro);
+  /* 菫色 — 引言邊框 */
+  --code-fg: var(--sora-iro);
+  /* 空色 — 程式碼   */
+  --mono: 'Courier New', 'Noto Sans Mono CJK', monospace;
+  --serif: 'Noto Serif CJK', 'Georgia', 'Source Han Serif', serif;
+
+  /* The Saki Gradient */
+  --gradient-primary: linear-gradient(135deg, var(--macaron-purple) 0%, var(--forget-me-not) 100%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.8;
+  max-width: 72ch;
+  margin: 0 auto;
+  padding: 2em 1.5em;
+}
+
+/* === vi statusline-style nav === */
+nav {
+  font-family: var(--mono);
+  font-size: 0.85em;
+  color: var(--dim);
+  border-bottom: 1px solid var(--sumire-iro);
+  padding-bottom: 0.5em;
+  margin-bottom: 2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+nav .lang a {
+  color: var(--dim);
+  text-decoration: none;
+  margin-left: 1em;
+  transition: color 0.2s;
+}
+
+nav .lang a:hover,
+nav .lang a.active {
+  color: var(--macaron-purple);
+}
+
+nav .site {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 0.05em;
+  font-weight: bold;
+}
+
+/* === headings === */
+h1 {
+  font-size: 1.6em;
+  font-weight: 400;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.3em;
+  letter-spacing: 0.03em;
+}
+
+h2 {
+  font-size: 1.1em;
+  font-weight: 400;
+  color: var(--macaron-purple);
+  margin: 2em 0 0.5em;
+  border-bottom: 1px dotted var(--sumire-iro);
+  padding-bottom: 0.2em;
+}
+
+/* === text === */
+p {
+  margin-bottom: 1em;
+}
+
+strong {
+  color: var(--macaron-purple);
+}
+
+blockquote {
+  border-left: 3px solid var(--quote-border);
+  padding-left: 1em;
+  color: var(--dim);
+  font-style: italic;
+  margin: 1em 0;
+}
+
+/* === code blocks (terminal-like) === */
+pre,
+code {
+  font-family: var(--mono);
+  font-size: 0.9em;
+}
+
+pre {
+  background: var(--bg-code);
+  padding: 1em;
+  overflow-x: auto;
+  margin: 1em 0;
+  border-left: 3px solid var(--sumire-iro);
+}
+
+code {
+  color: var(--code-fg);
+}
+
+/* === links === */
+a {
+  color: var(--link);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+/* === definition list style === */
+dl {
+  margin: 1em 0;
+}
+
+dt {
+  font-family: var(--mono);
+  color: var(--macaron-purple);
+  margin-top: 0.5em;
+}
+
+dd {
+  margin-left: 2em;
+  margin-bottom: 0.3em;
+}
+
+/* === footer === */
+footer {
+  margin-top: 3em;
+  padding-top: 1em;
+  border-top: 1px solid var(--sumire-iro);
+  font-size: 0.85em;
+  color: var(--dim);
+  font-family: var(--mono);
+}
+
+footer a {
+  color: var(--dim);
+}
+
+footer a:hover {
+  color: var(--forget-me-not);
+}
+
+/* === mobile === */
+@media (max-width: 600px) {
+  body {
+    font-size: 15px;
+    padding: 1em;
+  }
+
+  nav {
+    flex-direction: column;
+    gap: 0.3em;
+  }
+}

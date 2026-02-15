@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SakiVI — A Shortcut for Every Vi Loyalist</title>
+    <meta name="description"
+        content="Trilingual Vi text editor: Traditional Chinese, Japanese, English. Based on BusyBox-w32, GPL-2.0.">
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <nav>
+        <span class="site">:e SakiVI</span>
+        <span class="lang">
+            <a href="../">繁中</a>
+            <a href="../ja/">日本語</a>
+            <a href="." class="active">English</a>
+        </span>
+    </nav>
+
+    <h1>Vi-SakiWin64</h1>
+    <p>A shortcut for every vi loyalist. A poem that compiles.</p>
+
+    <blockquote>
+        <em>Fīnimus his…. Immo,</em> we <code>:wq</code> and carry on.
+    </blockquote>
+
+    <h2>Origin</h2>
+    <p>
+        The last known source was
+        <a href="https://ex-vi.sourceforge.net">Traditional Vi</a>.
+        The original vi vanished when its maintainer's account disappeared —
+        not a single fork survived.
+        Like a holotape recording, corrupted beyond recovery.
+    </p>
+    <p>
+        Credit to 袁志豪 / lichray for preserving it until the end.
+        Keith Bostic's Nvi carries too many dependencies;
+        rebuilding it would be like reconstructing a library in the wasteland.
+        So the source was taken directly from
+        <a href="https://github.com/rmyorston/busybox-w32">busybox-w32</a>
+        — a fire still burning in the Commonwealth.
+    </p>
+    <p>
+        This build is based on Ron Yorston's commit:<br>
+        <code>ash: fix execution of applets via Unix-style path</code><br>
+        <code>686a0803f974</code>
+    </p>
+    <p>
+        Gratitude to: Bill Joy (the creator), Gunnar Ritter (the guardian),
+        Ron Yorston (current gatekeeper).
+    </p>
+
+    <h2>Features</h2>
+    <dl>
+        <dt>🌏 Trilingual Interface</dt>
+        <dd>Traditional Chinese / Japanese / English</dd>
+        <dt>📦 Single Portable Binary</dt>
+        <dd>One .exe, drop it in PATH</dd>
+        <dt>🪟 Native Win64</dt>
+        <dd>WriteConsoleW for direct Unicode output — no codepage corruption</dd>
+        <dt>📖 :help</dt>
+        <dd>Built-in trilingual quick reference</dd>
+    </dl>
+
+    <h2>Install</h2>
+    <pre>
+# Scoop (recommended)
+scoop bucket add sakivi https://github.com/Saki-tw/scoop-sakivi
+scoop install saki-vi
+
+# Winget
+winget install SakiStudio.SakiVI
+
+# Manual: download vi.exe from Releases, place in PATH
+</pre>
+
+    <h2>Usage</h2>
+    <pre>
+vi file.txt          # edit file
+vi -H                # show enabled features
+vi --version         # version info
+:help                # trilingual reference
+:features            # compiled features
+</pre>
+
+    <h2>Build</h2>
+    <p>Requires MSYS2 UCRT64:</p>
+    <pre>
+git clone --recursive https://github.com/Saki-tw/Vi-SakiWin64.git
+cd Vi-SakiWin64
+bash scripts/build.sh
+</pre>
+
+    <h2>License</h2>
+    <p>
+        Code: <strong>GPL-2.0-only</strong><br>
+        Documentation: <strong>CC-BY-4.0</strong>
+    </p>
+    <p>
+        Derivative work of <a href="https://busybox.net/">BusyBox</a>
+        and <a href="https://github.com/rmyorston/busybox-w32">busybox-w32</a>.
+        Complete source code included as a git submodule.
+    </p>
+
+    <footer>
+        Copyright &copy; 2026 咲ちゃん（Saki）/ Saki Studio
+        &middot; <a href="http://saki-studio.com.tw">saki-studio.com.tw</a>
+        &middot; <a href="https://github.io/Saki-tw">GitHub</a>
+    </footer>
+
+</body>
+
+</html>
