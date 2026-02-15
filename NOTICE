@@ -1,0 +1,52 @@
+Vi-SakiWin64
+============
+
+Copyright (C) 2026 咲ちゃん（Saki）/ Saki Studio
+  Saki@saki-stuido.com.tw
+  http://saki-studio.com.tw
+  https://github.io/Saki-tw
+
+Co-authored-by: Claude Opus 4.6 (Anthropic)
+
+=== 修改聲明 / 変更通知 / Modification Notice ===
+(GPL-2.0 Section 2(a) compliance)
+
+本衍生作品基於 BusyBox v1.38.0.git (busybox-w32 fork)。
+以下檔案已被修改，修改日期：2026-02-15：
+
+  editors/vi.c:
+    - 新增三語使用者介面 (繁體中文 / 日本語 / English)
+    - 新增 puts_utf8() 使用 WriteConsoleW 繞過 ACP codepage 轉換
+    - 新增 show_vi_help() 三語快速參考卡
+    - 新增 :help / :h 冒號指令
+    - 新增 <windows.h> 引入用於 Unicode 直接輸出
+
+  ash.c:
+    - 修正 Windows 平台編譯錯誤 (signal handling / mingw compat)
+
+=== 上游歸屬 / 帰属 / Upstream Attribution ===
+
+BusyBox:
+  Copyright (C) 1998-2024 Erik Andersen, Rob Landley, Denys Vlasenko
+  and others.
+  https://busybox.net/
+  License: GPL-2.0-only
+
+busybox-w32 (Windows port):
+  Copyright (C) Ron Yorston and contributors
+  https://github.com/rmyorston/busybox-w32
+  License: GPL-2.0-only
+  Base commit: 686a0803f9747206eef5337100c5338431891e45
+    "ash: fix execution of applets via Unix-style path"
+
+=== 三語幫助文字 / ヘルプテキスト / Help Text ===
+
+三語幫助文字（show_help, show_vi_help, //usage 定義）為
+Saki Studio 原創作品。指令描述參考標準 vi 編輯器行為，
+如 POSIX 規範及 Traditional Vi 手冊所記載。
+
+The trilingual help text (show_help, show_vi_help, //usage
+definitions) is original work by Saki Studio. Command
+descriptions reference standard vi editor behavior as
+documented in the POSIX specification and the Traditional
+Vi manual (https://ex-vi.sourceforge.net).

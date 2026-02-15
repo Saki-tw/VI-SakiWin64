@@ -1,0 +1,54 @@
+================================================================
+Third-Party Licenses / 第三方授權 / サードパーティライセンス
+================================================================
+
+This file documents the licenses for all upstream components
+used in Vi-SakiWin64, as required by GPL-2.0.
+
+================================================================
+1. BusyBox
+================================================================
+
+Copyright (C) 1998-2024 Erik Andersen, Rob Landley, Denys Vlasenko
+and others.
+
+License: GNU General Public License version 2 only (GPL-2.0-only)
+
+BusyBox is distributed under version 2 of the General Public
+License (see LICENSE file). Version 2 is the only version of
+this license which this version of BusyBox (or modified versions
+derived from this one) may be distributed under.
+
+Source: https://busybox.net/
+Full license text: see LICENSE
+
+================================================================
+2. busybox-w32 (Windows port)
+================================================================
+
+Copyright (C) Ron Yorston and contributors
+
+License: GPL-2.0-only (same as upstream BusyBox)
+
+Source: https://github.com/rmyorston/busybox-w32
+Commit: 686a0803f9747206eef5337100c5338431891e45
+
+================================================================
+3. Corresponding Source Code (GPL-2.0 Section 3)
+================================================================
+
+The complete corresponding source code is included in this
+repository:
+
+  (a) The upstream busybox-w32 source is included as a git
+      submodule at: busybox-w32/
+      Pinned to commit: 686a0803f9747206eef5337100c5338431891e45
+      Clone with: git clone --recursive <repo-url>
+
+  (b) All modifications by Saki Studio are in patches/
+      These are applied on top of (a) during the build.
+
+  (c) scripts/build.sh reproduces the exact binary from (a)+(b).
+
+This satisfies GPL-2.0 Section 3(a): the complete corresponding
+machine-readable source code accompanies each binary distribution.

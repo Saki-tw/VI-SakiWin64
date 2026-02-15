@@ -1,0 +1,64 @@
+name: Build SakiVI
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: msys2 {0}
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - uses: msys2/setup-msys2@v2
+        with:
+          msystem: UCRT64
+          update: true
+          install: >-
+            base-devel
+            mingw-w64-ucrt-x86_64-gcc
+            git
+
+      - name: Pin busybox-w32 commit
+        run: |
+          cd busybox-w32
+          git checkout 686a0803f9747206eef5337100c5338431891e45
+
+      - name: Apply patches
+        run: |
+          cp patches/vi.c busybox-w32/editors/vi.c
+          cp patches/ash.c busybox-w32/ash.c
+
+      - name: Configure (vi-only)
+        run: |
+          cp scripts/vi_whitelist.config busybox-w32/vi_whitelist.config
+          cd busybox-w32
+          make allnoconfig KCONFIG_ALLCONFIG=vi_whitelist.config
+
+      - name: Build
+        run: |
+          cd busybox-w32
+          make -j$(nproc)
+
+      - name: Package
+        run: |
+          cp busybox-w32/busybox.exe vi.exe
+          sha256sum vi.exe > vi.exe.sha256
+
+      - name: Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            vi.exe
+            vi.exe.sha256

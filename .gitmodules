@@ -1,0 +1,3 @@
+[submodule "busybox-w32"]
+	path = busybox-w32
+	url = https://github.com/rmyorston/busybox-w32.git
