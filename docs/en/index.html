@@ -1,117 +1,410 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-color-mode="dark">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SakiVI — A Shortcut for Every Vi Loyalist</title>
-    <meta name="description"
-        content="Trilingual Vi text editor: Traditional Chinese, Japanese, English. Based on BusyBox-w32, GPL-2.0.">
-    <link rel="stylesheet" href="../style.css">
+    <title>Vi — The Original Vi | Saki Studio</title>
+    <meta name="description" content="Vi for Windows — the original Vi, not Vim. 178KB, trilingual, native Win64.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --macaron-purple: #c6a4cf;
+            --sumire-iro: #7058a3;
+            --forget-me-not: #89c3eb;
+            --hanada-iro: #2792c3;
+            --fuji-murasaki: #a59aca;
+            --bg-deep: #0d0a12;
+            --text-primary: #e8e0ef;
+            --text-secondary: #a098a8;
+            --gradient-saki: linear-gradient(135deg, var(--macaron-purple) 0%, var(--forget-me-not) 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-deep);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: -40%;
+            left: -20%;
+            width: 80vw;
+            height: 80vh;
+            background: radial-gradient(ellipse, rgba(198, 164, 207, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -30%;
+            right: -10%;
+            width: 60vw;
+            height: 60vh;
+            background: radial-gradient(ellipse, rgba(137, 195, 235, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+
+        nav .site {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--macaron-purple);
+            font-size: 0.9rem;
+        }
+
+        nav .lang a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-left: 1rem;
+            font-size: 0.85rem;
+            transition: color 0.2s;
+        }
+
+        nav .lang a:hover,
+        nav .lang a.active {
+            color: var(--forget-me-not);
+        }
+
+        h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            background: var(--gradient-saki);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+
+        .subtitle em {
+            color: var(--macaron-purple);
+            font-style: normal;
+        }
+
+        .badges {
+            display: flex;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+            margin: 1.5rem 0;
+        }
+
+        .badges img {
+            height: 24px;
+        }
+
+        .terminal {
+            background: rgba(13, 10, 18, 0.85);
+            border: 1px solid rgba(198, 164, 207, 0.15);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            line-height: 1.8;
+            backdrop-filter: blur(12px);
+        }
+
+        .terminal::before {
+            content: '● ● ●';
+            display: block;
+            color: rgba(198, 164, 207, 0.3);
+            font-size: 0.65rem;
+            letter-spacing: 4px;
+            margin-bottom: 1rem;
+        }
+
+        .terminal .prompt {
+            color: var(--forget-me-not);
+        }
+
+        .terminal .cmd {
+            color: var(--text-primary);
+        }
+
+        .terminal .comment {
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .glass-card {
+            background: linear-gradient(135deg, rgba(198, 164, 207, 0.08), rgba(137, 195, 235, 0.04));
+            border: 1px solid rgba(198, 164, 207, 0.12);
+            border-radius: 12px;
+            padding: 1.8rem;
+            margin: 1.5rem 0;
+            backdrop-filter: blur(16px);
+        }
+
+        .glass-card h2 {
+            font-size: 1.3rem;
+            color: var(--macaron-purple);
+            margin-bottom: 1rem;
+        }
+
+        .glass-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .rejection {
+            border-left: 3px solid var(--sumire-iro);
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            background: rgba(112, 88, 163, 0.08);
+            border-radius: 0 8px 8px 0;
+        }
+
+        .rejection .quote {
+            color: var(--text-secondary);
+            font-style: italic;
+            line-height: 1.6;
+            font-size: 0.9rem;
+        }
+
+        .rejection .attr {
+            color: var(--fuji-murasaki);
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+        }
+
+        .rejection .checks {
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+            font-size: 0.8rem;
+        }
+
+        a {
+            color: var(--hanada-iro);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: var(--forget-me-not);
+        }
+
+        h2.section-title {
+            font-size: 1.1rem;
+            color: var(--forget-me-not);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin: 3rem 0 1rem;
+            font-weight: 400;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .feature {
+            padding: 1rem;
+            border-radius: 8px;
+            background: rgba(198, 164, 207, 0.04);
+            border: 1px solid rgba(198, 164, 207, 0.08);
+            transition: border-color 0.3s;
+        }
+
+        .feature:hover {
+            border-color: rgba(198, 164, 207, 0.2);
+        }
+
+        .feature .icon {
+            font-size: 1.4rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .feature .label {
+            color: var(--text-primary);
+            font-size: 0.85rem;
+        }
+
+        .feature .label small {
+            color: var(--text-secondary);
+        }
+
+        .footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(198, 164, 207, 0.1);
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            text-align: center;
+            line-height: 1.8;
+        }
+
+        .footer .latin {
+            color: var(--fuji-murasaki);
+            font-style: italic;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 2rem 1.2rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
+    <div class="container">
+        <nav>
+            <span class="site">:e SakiVI</span>
+            <span class="lang">
+                <a href="../">繁中</a>
+                <a href="../ja/">日本語</a>
+                <a href="." class="active">English</a>
+            </span>
+        </nav>
 
-    <nav>
-        <span class="site">:e SakiVI</span>
-        <span class="lang">
-            <a href="../">繁中</a>
-            <a href="../ja/">日本語</a>
-            <a href="." class="active">English</a>
-        </span>
-    </nav>
+        <h1>Vi</h1>
+        <p class="subtitle">Bill Joy's vi, recompiled for Windows.<br><em>178KB</em>. That's it.</p>
 
-    <h1>Vi-SakiWin64</h1>
-    <p>A shortcut for every vi loyalist. A poem that compiles.</p>
+        <div class="badges">
+            <a href="https://github.com/microsoft/winget-pkgs/tree/master/manifests/s/SakiStudio/SakiVI"><img
+                    src="https://img.shields.io/badge/winget-SakiStudio.SakiVI-blue?logo=windows" alt="Winget"></a>
+            <img src="https://img.shields.io/badge/license-GPL--2.0-purple" alt="GPL-2.0">
+            <img src="https://img.shields.io/badge/size-178KB-brightgreen" alt="178KB">
+        </div>
 
-    <blockquote>
-        <em>Fīnimus his…. Immo,</em> we <code>:wq</code> and carry on.
-    </blockquote>
+        <h2 class="section-title">Install</h2>
 
-    <h2>Origin</h2>
-    <p>
-        The last known source was
-        <a href="https://ex-vi.sourceforge.net">Traditional Vi</a>.
-        The original vi vanished when its maintainer's account disappeared —
-        not a single fork survived.
-        Like a holotape recording, corrupted beyond recovery.
-    </p>
-    <p>
-        Credit to 袁志豪 / lichray for preserving it until the end.
-        Keith Bostic's Nvi carries too many dependencies;
-        rebuilding it would be like reconstructing a library in the wasteland.
-        So the source was taken directly from
-        <a href="https://github.com/rmyorston/busybox-w32">busybox-w32</a>
-        — a fire still burning in the Commonwealth.
-    </p>
-    <p>
-        This build is based on Ron Yorston's commit:<br>
-        <code>ash: fix execution of applets via Unix-style path</code><br>
-        <code>686a0803f974</code>
-    </p>
-    <p>
-        Gratitude to: Bill Joy (the creator), Gunnar Ritter (the guardian),
-        Ron Yorston (current gatekeeper).
-    </p>
+        <div class="terminal">
+            <span class="comment"># Winget — Official (Recommended)</span><br>
+            <span class="prompt">❯</span> <span class="cmd">winget install SakiStudio.SakiVI</span><br>
+            <span class="prompt">❯</span> <span class="cmd">vi file.txt</span><br>
+            <br>
+            <span class="comment"># Scoop — Bypass the Gatekeeper</span><br>
+            <span class="prompt">❯</span> <span class="cmd">scoop bucket add sakivi
+                https://github.com/Saki-tw/scoop-sakivi</span><br>
+            <span class="prompt">❯</span> <span class="cmd">scoop install saki-vi</span>
+        </div>
 
-    <h2>Features</h2>
-    <dl>
-        <dt>🌏 Trilingual Interface</dt>
-        <dd>Traditional Chinese / Japanese / English</dd>
-        <dt>📦 Single Portable Binary</dt>
-        <dd>One .exe, drop it in PATH</dd>
-        <dt>🪟 Native Win64</dt>
-        <dd>WriteConsoleW for direct Unicode output — no codepage corruption</dd>
-        <dt>📖 :help</dt>
-        <dd>Built-in trilingual quick reference</dd>
-    </dl>
+        <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin-bottom: 0.5rem;">
+            Approved by <a href="https://github.com/microsoft/winget-pkgs/pull/339486">Microsoft Winget</a> on first
+            submission.<br>
+            Rejected by <a href="https://github.com/ScoopInstaller/Main/pull/7643">Scoop Main</a> because "Vi is not
+            famous enough."
+        </p>
 
-    <h2>Install</h2>
-    <pre>
-# Scoop (recommended)
-scoop bucket add sakivi https://github.com/Saki-tw/scoop-sakivi
-scoop install saki-vi
+        <div class="rejection">
+            <p class="quote">"I suggest maintaining this in your personal bucket instead. Please feel free to reopen
+                this PR once it fully meets the criteria."</p>
+            <p class="attr">— <a href="https://github.com/z-Fng">z-Fng</a>, ScoopInstaller/Main <a
+                    href="https://github.com/ScoopInstaller/Main/pull/7643">#7643</a></p>
+            <p class="checks">All automated checks passed: Lint ✅ Description ✅ License ✅ Hashes ✅ Checkver ✅ Autoupdate
+                ✅</p>
+        </div>
 
-# Winget
-winget install SakiStudio.SakiVI
+        <h2 class="section-title">Features</h2>
 
-# Manual: download vi.exe from Releases, place in PATH
-</pre>
+        <div class="features">
+            <div class="feature">
+                <div class="icon">🌏</div>
+                <div class="label">Trilingual UI<br><small>繁中 / 日本語 / English</small></div>
+            </div>
+            <div class="feature">
+                <div class="icon">📦</div>
+                <div class="label">Single portable binary<br><small>Drop in PATH, done</small></div>
+            </div>
+            <div class="feature">
+                <div class="icon">🪟</div>
+                <div class="label">Native Win64<br><small>UCRT64 + Unicode</small></div>
+            </div>
+            <div class="feature">
+                <div class="icon">⚡</div>
+                <div class="label">BusyBox vi<br><small>Bill Joy's original</small></div>
+            </div>
+        </div>
 
-    <h2>Usage</h2>
-    <pre>
-vi file.txt          # edit file
-vi -H                # show enabled features
-vi --version         # version info
-:help                # trilingual reference
-:features            # compiled features
-</pre>
+        <h2 class="section-title">Origin</h2>
 
-    <h2>Build</h2>
-    <p>Requires MSYS2 UCRT64:</p>
-    <pre>
-git clone --recursive https://github.com/Saki-tw/Vi-SakiWin64.git
-cd Vi-SakiWin64
-bash scripts/build.sh
-</pre>
+        <div class="glass-card">
+            <h2>An editor that walked out of the ruins</h2>
+            <p>
+                vobject built Vi-win32, but the account and source code vanished together.
+                <a href="https://ex-vi.sourceforge.net">Traditional Vi</a> is the last surviving trace.
+                The source was ultimately taken from
+                <a href="https://github.com/rmyorston/busybox-w32">busybox-w32</a>
+                — Ron Yorston's actively maintained BusyBox fork for Windows.
+            </p>
+        </div>
 
-    <h2>License</h2>
-    <p>
-        Code: <strong>GPL-2.0-only</strong><br>
-        Documentation: <strong>CC-BY-4.0</strong>
-    </p>
-    <p>
-        Derivative work of <a href="https://busybox.net/">BusyBox</a>
-        and <a href="https://github.com/rmyorston/busybox-w32">busybox-w32</a>.
-        Complete source code included as a git submodule.
-    </p>
+        <h2 class="section-title">Usage</h2>
 
-    <footer>
-        Copyright &copy; 2026 咲ちゃん（Saki）/ Saki Studio
-        &middot; <a href="http://saki-studio.com.tw">saki-studio.com.tw</a>
-        &middot; <a href="https://github.io/Saki-tw">GitHub</a>
-    </footer>
+        <div class="terminal">
+            <span class="prompt">❯</span> <span class="cmd">vi file.txt</span> <span class="comment"># edit a
+                file</span><br>
+            <span class="prompt">❯</span> <span class="cmd">vi -H</span> <span class="comment"># features</span><br>
+            <span class="prompt">❯</span> <span class="cmd">vi --version</span> <span class="comment">#
+                version</span><br>
+            <span class="prompt">:</span><span class="cmd">help</span> <span class="comment"># trilingual quick
+                ref</span><br>
+            <span class="prompt">:</span><span class="cmd">features</span> <span class="comment"># compiled
+                features</span>
+        </div>
 
+        <div class="footer">
+            <p class="latin">Instaurare omnia in INSULA.</p>
+            <p>
+                <a href="https://github.com/Saki-tw/VI-SakiWin64">GitHub</a> ·
+                <a href="https://saki-studio.com.tw/vi/">Product Page</a> ·
+                <a href="https://saki-studio.com.tw">Saki Studio</a>
+            </p>
+            <p style="margin-top: 0.8rem;">
+                Author: 咲ちゃん（Saki）/ Saki Studio<br>
+                Co-author: Antigravity<br>
+                GPL-2.0-only
+            </p>
+        </div>
+    </div>
 </body>
 
 </html>

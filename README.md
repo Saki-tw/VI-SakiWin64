@@ -49,13 +49,33 @@ Based on commit `686a0803f9` (`ash: fix execution of applets via Unix-style path
 
 ## 安裝 / インストール / Install
 
-### Winget（推薦 / 推奨 / Recommended）
+[![Winget](https://img.shields.io/badge/winget-SakiStudio.SakiVI-blue?logo=windows)](https://github.com/microsoft/winget-pkgs/tree/master/manifests/s/SakiStudio/SakiVI)
+
+### Winget — Official Installation（推薦 / 推奨 / Recommended）
+
 ```powershell
 winget install SakiStudio.SakiVI
 vi file.txt
 ```
 
-### Scoop
+> Approved by [Microsoft Winget](https://github.com/microsoft/winget-pkgs/pull/339486) on first submission.
+> Rejected by [Scoop maintainers](https://github.com/ScoopInstaller/Main/pull/7643) because "Vi is not famous enough."
+
+<details>
+<summary>Scoop maintainer's exact words / 原文</summary>
+
+> I suggest maintaining this in your [personal bucket](https://github.com/ScoopInstaller/Scoop/wiki/Buckets#creating-your-own-bucket) instead. Please feel free to reopen this PR once it fully meets the criteria.
+>
+> — [z-Fng](https://github.com/z-Fng), ScoopInstaller/Main [#7643](https://github.com/ScoopInstaller/Main/pull/7643)
+
+All automated checks passed: Lint ✅ Description ✅ License ✅ Hashes ✅ Checkver ✅ Autoupdate ✅
+
+</details>
+
+### Scoop — Personal Bucket
+
+Since Scoop Main/Extras refuses to host this, you can add our personal bucket:
+
 ```powershell
 scoop bucket add sakivi https://github.com/Saki-tw/scoop-sakivi
 scoop install saki-vi
@@ -127,6 +147,5 @@ bash scripts/build.sh
 ## Acknowledgments
 
 - [BusyBox](https://busybox.net/) and [busybox-w32](https://github.com/rmyorston/busybox-w32) by Ron Yorston
-- [ScoopInstaller/Extras](https://github.com/ScoopInstaller/Extras) maintainers for review guidance
 - [microsoft/winget-pkgs](https://github.com/microsoft/winget-pkgs) for the validation pipeline and manifest feedback
 - Bill Joy, for writing vi in the first place
