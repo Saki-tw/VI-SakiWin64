@@ -49,18 +49,17 @@ Based on commit `686a0803f9` (`ash: fix execution of applets via Unix-style path
 
 ## 安裝 / インストール / Install
 
-### Scoop（推薦 / 推奨 / Recommended）
+### Winget（推薦 / 推奨 / Recommended）
+```powershell
+winget install SakiStudio.SakiVI
+vi file.txt
+```
+
+### Scoop
 ```powershell
 scoop bucket add sakivi https://github.com/Saki-tw/scoop-sakivi
 scoop install saki-vi
 vi file.txt   # 直接可用 / すぐ使える / ready to go
-```
-> 📋 已提交至 [ScoopInstaller/Extras](https://github.com/ScoopInstaller/Extras/pull/17210) 官方 bucket 審核中。通過後可直接 `scoop install saki-vi`。
-
-### Winget
-```powershell
-winget install SakiStudio.SakiVI
-vi file.txt
 ```
 
 ### 手動 / 手動 / Manual
